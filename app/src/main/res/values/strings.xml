@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyFitnessHelperVersion1</string>
+    <string name="find_gyms">Find Gyms</string>
+    <string name="myfitnesshelper">MyFitnessHelper</string>
 </resources>
