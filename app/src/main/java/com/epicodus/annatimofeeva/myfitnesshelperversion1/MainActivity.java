@@ -1,5 +1,6 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(MainActivity.this, "FirstActivity", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "FirstActivity", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, GymsActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -31,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(MainActivity.this, "SecondActivity", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "SecondActivity", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         });
 
