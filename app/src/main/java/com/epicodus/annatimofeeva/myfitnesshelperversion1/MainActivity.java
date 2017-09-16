@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "SecondActivity", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                intent.putExtra("about", "The information about application will be provide later");
                 startActivity(intent);
+
             }
         });
 
