@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mfindGymsButton;
     private Button maboutAppButon;
     private EditText mLocationEditText;
+    
+
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "FirstActivity", Toast.LENGTH_SHORT).show();
 
                 String location = mLocationEditText.getText().toString();
-                Log.d(TAG, location);
-
                 Intent intent = new Intent(MainActivity.this, GymsActivity.class);
+                intent.putExtra("location", location);
                 startActivity(intent);
 
             }
