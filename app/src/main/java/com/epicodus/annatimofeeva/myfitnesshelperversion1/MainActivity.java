@@ -1,12 +1,14 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mfindGymsButton;
     private Button maboutAppButon;
     private EditText mLocationEditText;
+    private TextView mAppNameTextView;
     
 
 
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
+        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/Windsong.ttf");
+        mAppNameTextView.setTypeface(ostrichFont);
         mLocationEditText = (EditText) findViewById(R.id.zipCode);
         mfindGymsButton = (Button) findViewById(R.id.findGymsButton);
         maboutAppButon = (Button) findViewById(R.id.aboutAppButon);
