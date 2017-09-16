@@ -12,14 +12,16 @@
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/myfitnesshelper"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:textColor="@color/colorPrimaryDark"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/main2"
+        android:scaleType="centerCrop"
+        android:textColor="@color/colorAccent"
+
+        />
 
     <Button
         android:text="@string/find_gyms"
@@ -33,11 +35,28 @@
 
         />
 
-    <ImageView
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myfitnesshelper"
+        android:layout_marginTop="57dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="About App"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/main2"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/aboutAppButon"
+        tools:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorTextIcons"
+        />
+
 
 </RelativeLayout>
