@@ -21,19 +21,10 @@
         android:scaleType="centerCrop"
         android:textColor="@color/colorAccent"
 
-        />
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
 
-    <Button
-        android:text="@string/find_gyms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/findGymsButton"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="11dp"
-        android:textColor="@color/colorTextIcons"
-        android:background="@color/colorAccent"
 
-        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +38,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="About App"
+        android:text="@string/about_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -57,6 +48,32 @@
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_above="@+id/findGymsButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/zipCode"
+        android:background="@color/colorTextIcons"
+        android:hint="Enter Zip Code"
+        android:numeric="integer" />
+
+    <Button
+        android:text="@string/find_gyms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/findGymsButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:textColor="@color/colorTextIcons"
+        android:background="@color/colorAccent"
+
+        />
+
 
 
 </RelativeLayout>
