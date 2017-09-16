@@ -9,13 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+
 
 public class GymsActivity extends AppCompatActivity {
+
+    @Bind(R.id.locationTextView) TextView mLocationTextView;
+    @Bind(R.id.listView) ListView mListView;
+
     private String[] gyms = new String[] {"Anytime Fitness", "The Seattle Gym", "Seattle Fitness Inc", "Seattle Authentic Club",
             "24 Hours Fitness", "Mode of Fitness", "Rival Fitness", "ZUM Fitness", "NW Fitness Gym", "Gold's Gym"
     };
-    private TextView mLocationTextView;
-    private ListView mListView;
+
 
 
 
@@ -23,6 +30,9 @@ public class GymsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyms);
+
+        ButterKnife.bind(this);
+
 
         mListView = (ListView) findViewById(R.id.listView);
         mLocationTextView = (TextView) findViewById(R.id.locationTextView);
