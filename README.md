@@ -19,7 +19,7 @@ You will need the following things properly installed on your computer.
 * Open the project with Android Studio
 
 
-## USER STORIES
+## User stories
 * User is able to see Application Main Page
 * User is able to click "About App" button and see "About" page content
 * User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms on the next page
