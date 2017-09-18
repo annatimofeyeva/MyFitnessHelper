@@ -3,11 +3,14 @@ package com.epicodus.annatimofeeva.myfitnesshelperversion1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.GymListAdapter;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.services.YelpService;
 
@@ -29,8 +32,13 @@ public class GymsActivity extends AppCompatActivity {
 
     public static final String TAG = GymsActivity.class.getSimpleName();
 
-    @Bind(R.id.locationTextView) TextView mLocationTextView;
-    @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
+    private GymListAdapter mAdapter;
+
+//    @Bind(R.id.locationTextView) TextView mLocationTextView;
+//    @Bind(R.id.listView) ListView mListView;
 
     public ArrayList<Gym> mGyms = new ArrayList<>();
 
@@ -74,7 +82,7 @@ public class GymsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Here are all the Gyms near: " + location);
+//        mLocationTextView.setText("Here are all the Gyms near: " + location);
 
         getGyms(location);
 
@@ -110,22 +118,37 @@ public class GymsActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            String[] restaurantNames = new String[mGyms.size()];
-                            for (int i = 0; i < restaurantNames.length; i++) {
-                                restaurantNames[i] = mGyms.get(i).getName();
-                            }
-                            ArrayAdapter adapter = new ArrayAdapter(GymsActivity.this, android.R.layout.simple_list_item_1, restaurantNames);
-                            mListView.setAdapter(adapter);
 
-                            for (Gym gym : mGyms) {
-                                Log.d(TAG, "Name: " + gym.getName());
-                                Log.d(TAG, "Phone: " + gym.getPhone());
-                                Log.d(TAG, "Website: " + gym.getWebsite());
-                                Log.d(TAG, "Image url: " + gym.getImageUrl());
-                                Log.d(TAG, "Rating: " + Double.toString(gym.getRating()));
-                                Log.d(TAG, "Address: " + android.text.TextUtils.join(", ", gym.getAddress()));
-                                Log.d(TAG, "Categories: " + gym.getCategories().toString());
-                            }
+
+
+                            mAdapter = new GymListAdapter(getApplicationContext(), mGyms);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager =
+                                    new LinearLayoutManager(GymsActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+
+
+
+
+
+
+//                            String[] restaurantNames = new String[mGyms.size()];
+//                            for (int i = 0; i < restaurantNames.length; i++) {
+//                                restaurantNames[i] = mGyms.get(i).getName();
+//                            }
+//                            ArrayAdapter adapter = new ArrayAdapter(GymsActivity.this, android.R.layout.simple_list_item_1, restaurantNames);
+//                            mListView.setAdapter(adapter);
+
+//                            for (Gym gym : mGyms) {
+//                                Log.d(TAG, "Name: " + gym.getName());
+//                                Log.d(TAG, "Phone: " + gym.getPhone());
+//                                Log.d(TAG, "Website: " + gym.getWebsite());
+//                                Log.d(TAG, "Image url: " + gym.getImageUrl());
+//                                Log.d(TAG, "Rating: " + Double.toString(gym.getRating()));
+//                                Log.d(TAG, "Address: " + android.text.TextUtils.join(", ", gym.getAddress()));
+//                                Log.d(TAG, "Categories: " + gym.getCategories().toString());
+//                            }
                         }
                     });
                 }
