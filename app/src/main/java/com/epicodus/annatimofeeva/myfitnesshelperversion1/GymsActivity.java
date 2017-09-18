@@ -3,18 +3,30 @@ package com.epicodus.annatimofeeva.myfitnesshelperversion1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+
+//import javax.security.auth.callback.Callback;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
+import okhttp3.Call;
+import okhttp3.Response;
+import okhttp3.Callback;
 
 
 public class GymsActivity extends AppCompatActivity {
+
+
+
+    public static final String TAG = GymsActivity.class.getSimpleName();
 
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.listView) ListView mListView;
@@ -51,7 +63,7 @@ public class GymsActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String gym = ((TextView)view).getText().toString();
+                String gym = ((TextView) view).getText().toString();
                 Toast.makeText(GymsActivity.this, gym, Toast.LENGTH_LONG).show();
             }
         });
@@ -61,5 +73,35 @@ public class GymsActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         mLocationTextView.setText("Here are all the Gyms near: " + location);
 
+        getGyms(location);
+
     }
-}
+        private void getGyms(String location) {
+            final YelpService yelpService = new YelpService();
+            yelpService.findGyms(location, new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+
+            });
+        }
+
+
+
+    }
+
