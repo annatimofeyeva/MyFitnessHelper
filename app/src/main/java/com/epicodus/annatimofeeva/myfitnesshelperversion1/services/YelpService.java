@@ -1,6 +1,9 @@
-package com.epicodus.annatimofeeva.myfitnesshelperversion1;
+package com.epicodus.annatimofeeva.myfitnesshelperversion1.services;
 
 //import javax.security.auth.callback.Callback;
+
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 
 import org.json.JSONArray;
 import org.json.JSONException;

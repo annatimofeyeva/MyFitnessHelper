@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme"> >
 
             <intent-filter>
@@ -21,10 +21,10 @@
         </activity>
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.MainActivity">
+            android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.MainActivity">
         </meta-data>
         <activity android:name=".GymsActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".ui.AboutActivity"></activity>
     </application>
 
 </manifest>

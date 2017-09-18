@@ -1,16 +1,17 @@
-package com.epicodus.annatimofeeva.myfitnesshelperversion1;
+package com.epicodus.annatimofeeva.myfitnesshelperversion1.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.GymsActivity;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 
 public class MainActivity extends AppCompatActivity  implements OnClickListener {
 

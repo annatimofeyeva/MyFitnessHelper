@@ -1,4 +1,4 @@
-package com.epicodus.annatimofeeva.myfitnesshelperversion1;
+package com.epicodus.annatimofeeva.myfitnesshelperversion1.models;
 
 import java.util.ArrayList;
 
