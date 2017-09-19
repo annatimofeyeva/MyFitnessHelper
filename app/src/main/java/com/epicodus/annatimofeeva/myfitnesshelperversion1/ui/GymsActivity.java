@@ -1,15 +1,12 @@
-package com.epicodus.annatimofeeva.myfitnesshelperversion1;
+package com.epicodus.annatimofeeva.myfitnesshelperversion1.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.GymListAdapter;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.services.YelpService;

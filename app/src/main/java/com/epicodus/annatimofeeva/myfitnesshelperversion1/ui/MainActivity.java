@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.epicodus.annatimofeeva.myfitnesshelperversion1.GymsActivity;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 
 public class MainActivity extends AppCompatActivity  implements OnClickListener {

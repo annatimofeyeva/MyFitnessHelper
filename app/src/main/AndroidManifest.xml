@@ -23,7 +23,7 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.MainActivity">
         </meta-data>
-        <activity android:name=".GymsActivity" />
+        <activity android:name=".ui.GymsActivity" />
         <activity android:name=".ui.AboutActivity"></activity>
     </application>
 
