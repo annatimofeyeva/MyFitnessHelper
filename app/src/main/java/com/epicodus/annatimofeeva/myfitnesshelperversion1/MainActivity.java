@@ -1,7 +1,9 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,9 +56,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String location = mLocationEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, GymsActivity.class);
-                intent.putExtra("location", location);
-                startActivity(intent);
+                if (location.length() == 0) {
+                    AlertDialog alert = new AlertDialog.Builder(MainActivity.this).create();
+                    alert.setTitle("No zip code entered");
+                    alert.setMessage("Please enter valid zip code");
+                    alert.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    alert.show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, GymsActivity.class);
+                    intent.putExtra("location", location);
+                    startActivity(intent);
+                }
             }
         });
         maboutButton.setOnClickListener(new View.OnClickListener() {
