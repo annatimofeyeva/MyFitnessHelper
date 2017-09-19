@@ -11,38 +11,71 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity  implements OnClickListener {
+
+
+
+public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-    private Button mfindGymsButton;
-    private Button maboutAppButon;
-    private EditText mLocationEditText;
-    private TextView mAppNameTextView;
+
+    @Bind(R.id.findGymsButton) Button mfindGymsButton;
+    @Bind(R.id.aboutButton) Button maboutButton;
+    @Bind(R.id.zipCode) EditText mLocationEditText;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+
+
+
+
+
+    //private Button mfindGymsButton;
+   // private Button maboutAppButon;
+    //private EditText mLocationEditText;
+    //private TextView mAppNameTextView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
+
+
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/Windsong.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
-        mLocationEditText = (EditText) findViewById(R.id.zipCode);
-        mfindGymsButton = (Button) findViewById(R.id.findGymsButton);
-        maboutAppButon = (Button) findViewById(R.id.aboutAppButon);
 
-        mfindGymsButton.setOnClickListener(this);
 
-        maboutAppButon.setOnClickListener(this);
+        //mfindGymsButton.setOnClickListener(this);
+        //maboutButton.setOnClickListener(this);
+        mfindGymsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String location = mLocationEditText.getText().toString();
+                Intent intent = new Intent(MainActivity.this, GymsActivity.class);
+                intent.putExtra("location", location);
+                startActivity(intent);
+            }
+        });
+        maboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                intent.putExtra("about", "The information about application will be provide later");
+                startActivity(intent);
+            }
+        });
 
 
     } //on Create
-
+/*
     @Override
 
     public void onClick(View view) {
+
+
 
         //Toast.makeText(MainActivity.this, "FirstActivity", Toast.LENGTH_SHORT).show();
         if(view == mfindGymsButton){
@@ -52,7 +85,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
         intent.putExtra("location", location);
         startActivity(intent);
         }
-        if(view ==  maboutAppButon) {
+        if(view ==  maboutButton) {
 
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
         intent.putExtra("about", "The information about application will be provide later");
@@ -60,7 +93,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
         }
 
 
-    }
+    }*/
 
     //@Override
 

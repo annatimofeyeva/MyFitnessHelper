@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/aboutAppButon"
+        android:id="@+id/aboutButton"
         tools:layout_width="match_parent"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
