@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String location = mLocationEditText.getText().toString();
-                if (location.length() == 0) {
+                if (location.length() != 5) {
                     AlertDialog alert = new AlertDialog.Builder(MainActivity.this).create();
-                    alert.setTitle("No zip code entered");
+                    alert.setTitle("Invalid zip code");
                     alert.setMessage("Please enter valid zip code");
                     alert.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
