@@ -10,13 +10,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.AboutActivity">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Page is under Comstruction "
+        android:text="MyFitnessHelper - Android application that tracks your weight and calculate a recommended daily calorie intake.The application also tracks and display all gyms according to zip code. If you have any questions or concerns, please contact us:"
+        android:id="@+id/textView" />
+
+    <TextView
         android:id="@+id/aboutTextView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="support@gyms.com"
+        android:autoLink="email"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginStart="99dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/webTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://google.com"
+        android:autoLink="web"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/aboutTextView"
+        android:layout_alignLeft="@+id/aboutTextView"
+        android:layout_alignStart="@+id/aboutTextView" />
+
 
 </RelativeLayout>
