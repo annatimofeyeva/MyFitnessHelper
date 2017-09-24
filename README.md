@@ -25,11 +25,17 @@ You will need the following things properly installed on your computer.
 * User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms on the next page
 * User is able to click on individual Gym item and see a Toast with Gym's name and Gym description
 * From each page user is able to return back using emulator's or real device "Back button"
+## User stories (branch version2)
+* User is able to see Application Main Page
+* User is able to click "About App" button and see "About" page content
+* User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms on the next page
+* User is able to click on individual Gym item and see a Toast with Gym's name and Gym description
+* From each page user is able to return back using emulator's or real device "Back button"
+* User is able to go to "About" page and write an email to company and go to the company web site
 ## User stories (master)
 * User is able to see Application Main Page
 * User is able to click "About App" button and see "About" page content
 * User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms' names, retrived from the Yelp API
-* From each page user is able to return back using emulator's or real device "Back button"
 ## Support and contact details
 
 _Please contact Anna Timofeyeva at anjatimofeyeva@gmail.com for any questions, feedback, or concerns._
