@@ -1,13 +1,13 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1.models;
 
 import java.util.ArrayList;
+import org.parceler.Parcel;
 
 /**
  * Created by anya on 9/17/17.
  */
-
-public class Gym {
-
+@Parcel
+    public class Gym {
 
     private String mName;
     private String mPhone;
@@ -18,6 +18,8 @@ public class Gym {
     private double mLatitude;
     private double mLongitude;
     private ArrayList<String> mCategories = new ArrayList<>();
+
+    public Gym() {}
 
     public Gym(String name, String phone, String website,
                       double rating, String imageUrl, ArrayList<String> address,

@@ -17,11 +17,11 @@
         android:background="@color/colorPrimary">
 
         <ImageView
+            android:id="@+id/gymImageView"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:id="@+id/restaurantImageView"
-            android:src="@drawable/placeholder5"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gym Name"
-                android:id="@+id/restaurantNameTextView"
+                android:id="@+id/gymNameTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textSize="20sp"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="4.5/5"
                 android:id="@+id/ratingTextView"
-                android:layout_alignTop="@+id/restaurantNameTextView"
+                android:layout_alignTop="@+id/gymNameTextView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/colorAccent"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Barre Classes"
                 android:id="@+id/cuisineTextView"
-                android:layout_below="@+id/restaurantNameTextView"
+                android:layout_below="@+id/gymNameTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textColor="@color/colorSecondaryText"
