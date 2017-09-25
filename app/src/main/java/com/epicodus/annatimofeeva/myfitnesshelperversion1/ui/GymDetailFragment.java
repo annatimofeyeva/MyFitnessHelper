@@ -26,7 +26,7 @@ public class GymDetailFragment extends Fragment {
     @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
     @Bind(R.id.phoneTextView) TextView mPhoneLabel;
     @Bind(R.id.addressTextView) TextView mAddressLabel;
-    @Bind(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
+    @Bind(R.id.saveGymButton) TextView mSaveRestaurantButton;
 
     private Gym mGym;
 
