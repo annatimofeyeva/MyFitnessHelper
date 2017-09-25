@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,10 @@ public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.GymViewH
         }
 
         public void bindGym(Gym gym) {
+
+            Picasso.with(mContext).load(gym.getImageUrl()).into(mGymImageView);
+
+
             mNameTextView.setText(gym.getName());
             mCategoryTextView.setText(gym.getCategories().get(0));
             mRatingTextView.setText("Rating: " + gym.getRating() + "/5");
