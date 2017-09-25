@@ -6,19 +6,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.squareup.picasso.Picasso;
-
 import org.parceler.Parcels;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class GymDetailFragment extends Fragment {
+
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
+
     @Bind(R.id.gymImageView) ImageView mImageLabel;
     @Bind(R.id.gymNameTextView) TextView mNameLabel;
     @Bind(R.id.cuisineTextView) TextView mCategoriesLabel;
@@ -49,7 +50,11 @@ public class GymDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gym_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mGym.getImageUrl()).into(mImageLabel);
+        Picasso.with(view.getContext())
+                .load(mGym.getImageUrl())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mImageLabel);
 
         mNameLabel.setText(mGym.getName());
         mCategoriesLabel.setText(android.text.TextUtils.join(", ", mGym.getCategories()));

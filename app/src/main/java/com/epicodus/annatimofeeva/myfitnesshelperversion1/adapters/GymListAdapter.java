@@ -24,6 +24,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.GymViewHolder>  {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
     private ArrayList<Gym> mGyms = new ArrayList<>();
     private Context mContext;
 
@@ -78,7 +81,9 @@ public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.GymViewH
 
     public void bindGym(Gym gym) {
         Picasso.with(mContext)
-                .load(gym.getImageUrl()).resize(100, 100).centerCrop()
+                .load(gym.getImageUrl())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
                 .into(mGymImageView);
         mNameTextView.setText(gym.getName());
         mCategoryTextView.setText(gym.getCategories().get(0));
