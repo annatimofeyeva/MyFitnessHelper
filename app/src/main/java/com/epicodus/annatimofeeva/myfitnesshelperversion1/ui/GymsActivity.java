@@ -1,21 +1,21 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.GymListAdapter;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.services.YelpService;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
-//import javax.security.auth.callback.Callback;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
@@ -25,9 +25,9 @@ import okhttp3.Callback;
 
 public class GymsActivity extends AppCompatActivity {
 
-
-
     public static final String TAG = GymsActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -50,16 +50,12 @@ public class GymsActivity extends AppCompatActivity {
 //    "Your workout should always be the high point of your day. Our Seattle gym is designed to excite and motivate, with amazing studio classes, innovative training programs, and ample workout space to help you get into your zone and get moving.",
 //    "Today Gold’s Gym is the most recognized name in fitness serving more than 3 million members in 38 states and 22 countries around the world. Always at the forefront of the fitness revolution, Gold’s Gym has continually evolved its profile by equipping gyms with the best amenities and the latest in cardio and strength training equipment as well as the most dynamic group exercise programs including Zumba, yoga, group cycling, mixed martial arts, muscle endurance training, and Pilates."
 //    };
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyms);
 
         ButterKnife.bind(this);
-
 
 //        mListView = (ListView) findViewById(R.id.listView);
 //        mLocationTextView = (TextView) findViewById(R.id.locationTextView);
@@ -76,13 +72,17 @@ public class GymsActivity extends AppCompatActivity {
 //            }
 //        });
 
-
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
 //        mLocationTextView.setText("Here are all the Gyms near: " + location);
-
         getGyms(location);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress != null) {
+            getGyms(mRecentAddress);
+        }
+        Log.d("Shared Pref Location", mRecentAddress);
     }
         private void getGyms(String location) {
             final YelpService yelpService = new YelpService();
