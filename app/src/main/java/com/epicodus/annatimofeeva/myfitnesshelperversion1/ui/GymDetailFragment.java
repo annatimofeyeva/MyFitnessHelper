@@ -1,6 +1,8 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,19 +17,27 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class GymDetailFragment extends Fragment {
+public class GymDetailFragment extends Fragment implements View.OnClickListener {
 
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
-    @Bind(R.id.gymImageView) ImageView mImageLabel;
-    @Bind(R.id.gymNameTextView) TextView mNameLabel;
-    @Bind(R.id.cuisineTextView) TextView mCategoriesLabel;
-    @Bind(R.id.ratingTextView) TextView mRatingLabel;
-    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
-    @Bind(R.id.phoneTextView) TextView mPhoneLabel;
-    @Bind(R.id.addressTextView) TextView mAddressLabel;
-    @Bind(R.id.saveGymButton) TextView mSaveRestaurantButton;
+    @Bind(R.id.gymImageView)
+    ImageView mImageLabel;
+    @Bind(R.id.gymNameTextView)
+    TextView mNameLabel;
+    @Bind(R.id.cuisineTextView)
+    TextView mCategoriesLabel;
+    @Bind(R.id.ratingTextView)
+    TextView mRatingLabel;
+    @Bind(R.id.websiteTextView)
+    TextView mWebsiteLabel;
+    @Bind(R.id.phoneTextView)
+    TextView mPhoneLabel;
+    @Bind(R.id.addressTextView)
+    TextView mAddressLabel;
+    @Bind(R.id.saveGymButton)
+    TextView mSaveRestaurantButton;
 
     private Gym mGym;
 
@@ -62,15 +72,36 @@ public class GymDetailFragment extends Fragment {
         mPhoneLabel.setText(mGym.getPhone());
         mAddressLabel.setText(android.text.TextUtils.join(", ", mGym.getAddress()));
 
+        mWebsiteLabel.setOnClickListener(this);
+        mPhoneLabel.setOnClickListener(this);
+        mAddressLabel.setOnClickListener(this);
+
         return view;
+    }
+
+    @Override
+        public void onClick(View view){
+            if (view == mWebsiteLabel) {
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(mGym.getWebsite()));
+                startActivity(webIntent);
+            }
+            if (view == mPhoneLabel) {
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                        Uri.parse("tel:" + mGym.getPhone()));
+                startActivity(phoneIntent);
+            }
+            if (view == mAddressLabel) {
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("geo:" + mGym.getLatitude()
+                                + "," + mGym.getLongitude()
+                                + "?q=(" + mGym.getName() + ")"));
+                startActivity(mapIntent);
+        }
     }
 }
 
 
-
-///**
-// * A simple {@link Fragment} subclass.
-// */
 //public class GymDetailFragment extends Fragment {
 //
 //
