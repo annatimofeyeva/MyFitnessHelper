@@ -54,20 +54,19 @@ public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.GymViewH
         @Bind(R.id.ratingTextView) TextView mRatingTextView;
         private Context mContext;
 
-        public GymViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-        }
+    public GymViewHolder(View itemView) {
+        super(itemView);
+        ButterKnife.bind(this, itemView);
+        mContext = itemView.getContext();
+    }
 
-        public void bindGym(Gym gym) {
-
-            Picasso.with(mContext).load(gym.getImageUrl()).into(mGymImageView);
-
-
-            mNameTextView.setText(gym.getName());
-            mCategoryTextView.setText(gym.getCategories().get(0));
-            mRatingTextView.setText("Rating: " + gym.getRating() + "/5");
+    public void bindGym(Gym gym) {
+        Picasso.with(mContext)
+                .load(gym.getImageUrl()).resize(100, 100).centerCrop()
+                .into(mGymImageView);
+        mNameTextView.setText(gym.getName());
+        mCategoryTextView.setText(gym.getCategories().get(0));
+        mRatingTextView.setText("Rating: " + gym.getRating() + "/5");
         }
     }
 }//end of class
