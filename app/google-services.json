@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "475395191233",
+    "firebase_url": "https://myfitnesshelperversion1.firebaseio.com",
+    "project_id": "myfitnesshelperversion1",
+    "storage_bucket": "myfitnesshelperversion1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475395191233:android:6938c4539887be47",
+        "android_client_info": {
+          "package_name": "com.epicodus.annatimofeeva.myfitnesshelperversion1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475395191233-90a6vkca8vgrd7gm2vp3t8lls6uqkblp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.annatimofeeva.myfitnesshelperversion1",
+            "certificate_hash": "a9bf0544bab63fe534e25a2842c41a9a6e150bed"
+          }
+        },
+        {
+          "client_id": "475395191233-nd131v2j0u1vuiustunf39rfir0iksrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkig6mg1EWnKpc7FkZiHZzbDemeLu6Hac"
+        },
+        {
+          "current_key": "AIzaSyAgvQ0LC5nzFGqjdjNlEhX5Cn4WfXIDQew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475395191233-nd131v2j0u1vuiustunf39rfir0iksrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
