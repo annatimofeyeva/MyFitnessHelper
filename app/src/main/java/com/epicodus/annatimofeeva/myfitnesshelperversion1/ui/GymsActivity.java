@@ -26,8 +26,8 @@ import okhttp3.Callback;
 public class GymsActivity extends AppCompatActivity {
 
     public static final String TAG = GymsActivity.class.getSimpleName();
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -77,12 +77,12 @@ public class GymsActivity extends AppCompatActivity {
 //        mLocationTextView.setText("Here are all the Gyms near: " + location);
         getGyms(location);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if (mRecentAddress != null) {
-            getGyms(mRecentAddress);
-        }
-        Log.d("Shared Pref Location", mRecentAddress);
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        if (mRecentAddress != null) {
+//            getGyms(mRecentAddress);
+//        }
+//        Log.d("Shared Pref Location", mRecentAddress);
     }
         private void getGyms(String location) {
             final YelpService yelpService = new YelpService();
@@ -149,15 +149,7 @@ public class GymsActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-
-
-
-
             });
         }
-
-
-
     }
 

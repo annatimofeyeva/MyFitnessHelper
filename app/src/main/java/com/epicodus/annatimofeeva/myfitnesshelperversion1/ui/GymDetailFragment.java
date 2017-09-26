@@ -8,10 +8,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
+
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 import butterknife.Bind;
@@ -37,7 +45,7 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
     @Bind(R.id.addressTextView)
     TextView mAddressLabel;
     @Bind(R.id.saveGymButton)
-    TextView mSaveRestaurantButton;
+    TextView mSaveGymButton;
 
     private Gym mGym;
 
@@ -76,6 +84,8 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
 
+        mSaveGymButton.setOnClickListener(this);
+
         return view;
     }
 
@@ -97,10 +107,17 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
                                 + "," + mGym.getLongitude()
                                 + "?q=(" + mGym.getName() + ")"));
                 startActivity(mapIntent);
-        }
-    }
-}
+            }
+            if (view == mSaveGymButton) {
+                DatabaseReference restaurantRef = FirebaseDatabase
+                            .getInstance()
+                            .getReference(Constants.FIREBASE_CHILD_GYMS);
+                    restaurantRef.push().setValue(mGym);
+                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            }
 
+    }//end of OnClick
+} //end of class
 
 //public class GymDetailFragment extends Fragment {
 //

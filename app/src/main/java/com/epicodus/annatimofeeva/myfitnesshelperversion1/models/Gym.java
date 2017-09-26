@@ -1,38 +1,37 @@
 package com.epicodus.annatimofeeva.myfitnesshelperversion1.models;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.parceler.Parcel;
 
-/**
- * Created by anya on 9/17/17.
- */
 @Parcel
     public class Gym {
 
-    private String mName;
-    private String mPhone;
-    private String mWebsite;
-    private double mRating;
-    private String mImageUrl;
-    private ArrayList<String> mAddress = new ArrayList<>();
-    private double mLatitude;
-    private double mLongitude;
-    private ArrayList<String> mCategories = new ArrayList<>();
+    private String Name;
+    private String Phone;
+    private String Website;
+    private double Rating;
+    private String ImageUrl;
+    private List<String> Address = new ArrayList<>();
+    private double Latitude;
+    private double Longitude;
+    private List<String> Categories = new ArrayList<>();
 
     public Gym() {}
 
     public Gym(String name, String phone, String website,
                       double rating, String imageUrl, ArrayList<String> address,
                       double latitude, double longitude, ArrayList<String> categories) {
-        this.mName = name;
-        this.mPhone = phone;
-        this.mWebsite = website;
-        this.mRating = rating;
-        this.mImageUrl = getLargeImageUrl(imageUrl);
-        this.mAddress = address;
-        this.mLatitude = latitude;
-        this.mLongitude = longitude;
-        this.mCategories = categories;
+        this.Name = name;
+        this.Phone = phone;
+        this.Website = website;
+        this.Rating = rating;
+        this.ImageUrl = getLargeImageUrl(imageUrl);
+        this.Address = address;
+        this.Latitude = latitude;
+        this.Longitude = longitude;
+        this.Categories = categories;
 
     }
 
@@ -42,42 +41,39 @@ import org.parceler.Parcel;
     }
 
     public String getName() {
-        return mName;
+        return Name;
     }
 
     public String getPhone() {
-        return mPhone;
+        return Phone;
     }
 
     public String getWebsite() {
-        return  mWebsite;
+        return  Website;
     }
 
     public double getRating() {
-        return mRating;
+        return Rating;
     }
 
     public String getImageUrl(){
-        return mImageUrl;
+        return ImageUrl;
     }
 
-    public ArrayList<String> getAddress() {
-        return mAddress;
+    public List<String> getAddress() {
+        return Address ;
     }
 
     public double getLatitude() {
-        return mLatitude;
+        return Latitude;
     }
 
     public double getLongitude() {
-        return mLongitude;
+        return Longitude;
     }
 
-    public ArrayList<String> getCategories() {
-        return mCategories;
+    public List<String> getCategories() {
+        return Categories;
     }
-
-
-
 
 } //end of class
