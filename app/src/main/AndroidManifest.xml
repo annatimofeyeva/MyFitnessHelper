@@ -13,11 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme">
-            >
+            android:name=".ui.MainActivity">
         </activity>
-
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.MainActivity" />
@@ -36,5 +33,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
