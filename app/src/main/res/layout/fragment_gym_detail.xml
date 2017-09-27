@@ -128,9 +128,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/colorAccent"
+                android:background="@color/colorTextIcons"
                 android:text="Save Gym"
-                android:textColor="@color/colorTextIcons"
+                android:textColor="@color/colorPrimaryText"
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
