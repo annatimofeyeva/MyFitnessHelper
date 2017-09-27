@@ -8,30 +8,30 @@ import org.parceler.Parcel;
 @Parcel
     public class Gym {
 
-    private String Name;
-    private String Phone;
-    private String Website;
-    private double Rating;
-    private String ImageUrl;
-    private List<String> Address = new ArrayList<>();
-    private double Latitude;
-    private double Longitude;
-    private List<String> Categories = new ArrayList<>();
+   String name;
+   String phone;
+   String website;
+   double rating;
+   String imageUrl;
+    List<String> address = new ArrayList<>();
+    double latitude;
+   double longitude;
+     List<String> categories = new ArrayList<>();
 
     public Gym() {}
 
     public Gym(String name, String phone, String website,
                       double rating, String imageUrl, ArrayList<String> address,
                       double latitude, double longitude, ArrayList<String> categories) {
-        this.Name = name;
-        this.Phone = phone;
-        this.Website = website;
-        this.Rating = rating;
-        this.ImageUrl = getLargeImageUrl(imageUrl);
-        this.Address = address;
-        this.Latitude = latitude;
-        this.Longitude = longitude;
-        this.Categories = categories;
+        this.name = name;
+        this.phone = phone;
+        this.website = website;
+        this.rating = rating;
+        this.imageUrl = getLargeImageUrl(imageUrl);
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.categories = categories;
 
     }
 
@@ -41,39 +41,39 @@ import org.parceler.Parcel;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public String getWebsite() {
-        return  Website;
+        return  website;
     }
 
     public double getRating() {
-        return Rating;
+        return rating;
     }
 
     public String getImageUrl(){
-        return ImageUrl;
+        return imageUrl;
     }
 
     public List<String> getAddress() {
-        return Address ;
+        return address ;
     }
 
     public double getLatitude() {
-        return Latitude;
+        return latitude;
     }
 
     public double getLongitude() {
-        return Longitude;
+        return longitude;
     }
 
     public List<String> getCategories() {
-        return Categories;
+        return categories;
     }
 
 } //end of class

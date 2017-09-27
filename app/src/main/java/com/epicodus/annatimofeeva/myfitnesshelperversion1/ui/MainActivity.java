@@ -27,20 +27,24 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
 //    private SharedPreferences.Editor mEditor;
 
     private DatabaseReference mSearchedLocationReference;
-
     private ValueEventListener mSearchedLocationReferenceListener;
 
 
-
     public static final String TAG = MainActivity.class.getSimpleName();
+
+
     private Button mfindGymsButton;
     private Button maboutAppButon;
     private EditText mLocationEditText;
     private TextView mAppNameTextView;
+    private Button mSavedGymButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 
         mSearchedLocationReference = FirebaseDatabase
                 .getInstance()
@@ -64,8 +68,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
 
         });
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
 
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mEditor = mSharedPreferences.edit();
@@ -75,11 +78,12 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
         mLocationEditText = (EditText) findViewById(R.id.zipCode);
         mfindGymsButton = (Button) findViewById(R.id.findGymsButton);
         maboutAppButon = (Button) findViewById(R.id.aboutAppButon);
+        mSavedGymButton = (Button) findViewById(R.id.savedGymsButton);
 
         mfindGymsButton.setOnClickListener(this);
 
         maboutAppButon.setOnClickListener(this);
-
+        mSavedGymButton.setOnClickListener(this);
 
     } //end of onCreate
 
@@ -106,7 +110,14 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
             intent.putExtra("about", "The information about application will be provide later");
             startActivity(intent);
         }
-    }
+
+            if (view == mSavedGymButton) {
+                Intent intent = new Intent(MainActivity.this, SavedGymListActivity.class);
+                startActivity(intent);
+            }
+
+        }
+
 
     public void saveLocationToFirebase(String location) {
         mSearchedLocationReference.push().setValue(location);

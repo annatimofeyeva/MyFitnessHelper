@@ -25,11 +25,13 @@
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.MainActivity"></meta-data>
+            android:value="com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.MainActivity" />
 
         <activity android:name=".ui.GymsActivity" />
         <activity android:name=".ui.AboutActivity" />
-        <activity android:name=".ui.GymDetailActivity"></activity>
+        <activity android:name=".ui.GymDetailActivity" />
+        <activity android:name=".ui.Main2Activity" />
+        <activity android:name=".ui.SavedGymListActivity" />
     </application>
 
 </manifest>
