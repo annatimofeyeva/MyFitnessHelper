@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        Toast.makeText(MainActivity.this, "LogOut successful.",
+                Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
 //            if(!(location).equals("")) {
 //                addToSharedPreferences(location);
 //            }
-            saveLocationToFirebase(location);
+            //saveLocationToFirebase(location);
 
             Intent intent = new Intent(MainActivity.this, GymsActivity.class);
             intent.putExtra("location", location);
@@ -148,16 +151,16 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
         }
 
 
-    public void saveLocationToFirebase(String location) {
-        mSearchedLocationReference.push().setValue(location);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
-    }
+//    public void saveLocationToFirebase(String location) {
+//        mSearchedLocationReference.push().setValue(location);
+//    }
+//
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
+//    }
 
 //    private void addToSharedPreferences(String location) {
 //        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
