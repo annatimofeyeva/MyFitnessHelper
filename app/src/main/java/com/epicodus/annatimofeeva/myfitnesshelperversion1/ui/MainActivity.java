@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
             Intent intent = new Intent(MainActivity.this, GymsActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
+
         }
         if (view == maboutAppButon) {
 
