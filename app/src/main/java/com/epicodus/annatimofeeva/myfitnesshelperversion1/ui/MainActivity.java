@@ -31,6 +31,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity  implements OnClickListener {
 
+    public static final String TAG = LoginActivity.class.getSimpleName();
+
     @Bind(R.id.findGymsButton) Button mFindGymsButton;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
     @Bind(R.id.savedGymsButton) Button   mSavedGymsButton;
