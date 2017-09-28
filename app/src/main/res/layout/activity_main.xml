@@ -45,25 +45,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/aboutAppButon"
+        android:id="@+id/aboutAppButton"
         tools:layout_width="match_parent"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_marginBottom="11dp"
-        android:id="@+id/zipCode"
-        android:background="@color/colorTextIcons"
-        android:hint="Enter Zip Code"
-        android:numeric="integer"
-        tools:ignore="Deprecated,HardcodedText"
-        android:layout_above="@+id/findGymsButton"
-        android:layout_centerHorizontal="true" />
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="number"-->
+        <!--android:ems="10"-->
+        <!--android:layout_marginBottom="11dp"-->
+        <!--android:id="@+id/zipCode"-->
+        <!--android:background="@color/colorTextIcons"-->
+        <!--android:hint="Enter Zip Code"-->
+        <!--android:numeric="integer"-->
+        <!--tools:ignore="Deprecated,HardcodedText"-->
+        <!--android:layout_above="@+id/findGymsButton"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <Button
         android:text="@string/find_gyms"

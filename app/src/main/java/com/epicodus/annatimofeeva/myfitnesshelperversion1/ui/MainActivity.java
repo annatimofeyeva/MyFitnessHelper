@@ -26,71 +26,32 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity  implements OnClickListener {
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
-    private DatabaseReference mSearchedLocationReference;
-    private ValueEventListener mSearchedLocationReferenceListener;
-
-
-    public static final String TAG = MainActivity.class.getSimpleName();
-
-
-    private Button mfindGymsButton;
-    private Button maboutAppButon;
-    private EditText mLocationEditText;
-    private TextView mAppNameTextView;
-    private Button mSavedGymButton;
+    @Bind(R.id.findGymsButton) Button mFindGymsButton;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.savedGymsButton) Button   mSavedGymsButton;
+    @Bind(R.id.aboutAppButton) Button maboutAppButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
 
-        mSearchedLocationReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
-
-        mSearchedLocationReference.addValueEventListener(new ValueEventListener() { //attach listener
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
-                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
-                    String location = locationSnapshot.getValue().toString();
-                    Log.d("Locations updated", "location: " + location); //log
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
-
-            }
-
-        });
-
-
-
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
-        mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/Walkway_UltraBold.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
-        mLocationEditText = (EditText) findViewById(R.id.zipCode);
-        mfindGymsButton = (Button) findViewById(R.id.findGymsButton);
-        maboutAppButon = (Button) findViewById(R.id.aboutAppButon);
-        mSavedGymButton = (Button) findViewById(R.id.savedGymsButton);
 
-        mfindGymsButton.setOnClickListener(this);
+        mFindGymsButton.setOnClickListener(this);
+        mSavedGymsButton.setOnClickListener(this);
+        maboutAppButton.setOnClickListener(this);
 
-        maboutAppButon.setOnClickListener(this);
-        mSavedGymButton.setOnClickListener(this);
-
-    } //end of onCreate
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,81 +63,49 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
         if (id == R.id.action_logout) {
             logout();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Toast.makeText(MainActivity.this, "LogOut successful.",
-                Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        Toast.makeText(MainActivity.this, "LogOut successful.",
+                Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void onClick(View view) {
 
-        //Toast.makeText(MainActivity.this, "FirstActivity", Toast.LENGTH_SHORT).show();
-        if (view == mfindGymsButton) {
-
-            String location = mLocationEditText.getText().toString();
-//            if(!(location).equals("")) {
-//                addToSharedPreferences(location);
-//            }
-            //saveLocationToFirebase(location);
-
-            Intent intent = new Intent(MainActivity.this, GymsActivity.class);
-            intent.putExtra("location", location);
-            startActivity(intent);
-
-        }
-        if (view == maboutAppButon) {
+        if (view == maboutAppButton) {
 
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             intent.putExtra("about", "The information about application will be provide later");
             startActivity(intent);
         }
 
-            if (view == mSavedGymButton) {
-                Intent intent = new Intent(MainActivity.this, SavedGymListActivity.class);
-                startActivity(intent);
-            }
-
+        if (view ==  mSavedGymsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedGymListActivity.class);
+            startActivity(intent);
         }
 
+        if(view == mFindGymsButton) {
+            Intent intent = new Intent(MainActivity.this, GymsActivity.class);
+            startActivity(intent);
+        }
 
-//    public void saveLocationToFirebase(String location) {
-//        mSearchedLocationReference.push().setValue(location);
-//    }
-//
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
-//    }
-
-//    private void addToSharedPreferences(String location) {
-//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
-//    }
+    }
 
 }
-//@Override
-//    public void onClick(View view) {
-//
-//        //Toast.makeText(MainActivity.this, "SecondActivity", Toast.LENGTH_SHORT).show();
-//
-//        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-//        intent.putExtra("about", "The information about application will be provide later");
-//        startActivity(intent);
-//
-//    }
+
 
 
 
