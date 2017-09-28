@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity  implements OnClickListener 
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mEditor = mSharedPreferences.edit();
         mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
-        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/Windsong.ttf");
+        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/Walkway_UltraBold.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
         mLocationEditText = (EditText) findViewById(R.id.zipCode);
         mfindGymsButton = (Button) findViewById(R.id.findGymsButton);
