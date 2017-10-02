@@ -11,6 +11,8 @@ import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.FirebaseGymViewHolder;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +34,14 @@ public class SavedGymListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gyms);
         ButterKnife.bind(this);
 
-        mGymReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GYMS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mGymReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_GYMS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 

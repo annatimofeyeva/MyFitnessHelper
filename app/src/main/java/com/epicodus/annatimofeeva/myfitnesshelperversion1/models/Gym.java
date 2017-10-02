@@ -15,8 +15,9 @@ import org.parceler.Parcel;
    String imageUrl;
     List<String> address = new ArrayList<>();
     double latitude;
-   double longitude;
-     List<String> categories = new ArrayList<>();
+    double longitude;
+    List<String> categories = new ArrayList<>();
+    private String pushId;
 
     public Gym() {}
 
@@ -74,6 +75,14 @@ import org.parceler.Parcel;
 
     public List<String> getCategories() {
         return categories;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 } //end of class

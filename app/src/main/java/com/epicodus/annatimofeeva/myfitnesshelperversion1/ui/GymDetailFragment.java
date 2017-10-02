@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -109,11 +111,20 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
                 startActivity(mapIntent);
             }
             if (view == mSaveGymButton) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
                 DatabaseReference restaurantRef = FirebaseDatabase
-                            .getInstance()
-                            .getReference(Constants.FIREBASE_CHILD_GYMS);
-                    restaurantRef.push().setValue(mGym);
-                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_GYMS)
+                        .child(uid);
+
+                DatabaseReference pushRef = restaurantRef.push();
+                String pushId = pushRef.getKey();
+                mGym.setPushId(pushId);
+                pushRef.setValue(mGym);
+
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
             }
 
     }//end of OnClick
