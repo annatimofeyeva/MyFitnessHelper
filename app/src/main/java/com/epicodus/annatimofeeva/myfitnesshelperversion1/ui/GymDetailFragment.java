@@ -114,12 +114,12 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
 
-                DatabaseReference restaurantRef = FirebaseDatabase
+                DatabaseReference gymRef = FirebaseDatabase
                         .getInstance()
                         .getReference(Constants.FIREBASE_CHILD_GYMS)
                         .child(uid);
 
-                DatabaseReference pushRef = restaurantRef.push();
+                DatabaseReference pushRef = gymRef.push();
                 String pushId = pushRef.getKey();
                 mGym.setPushId(pushId);
                 pushRef.setValue(mGym);

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
+    public ImageView mGymImageView;
 
     View mView;
     Context mContext;
@@ -38,7 +39,9 @@ public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     public void bindGym(Gym gym) {
-        ImageView restaurantImageView = (ImageView) mView.findViewById(R.id.gymImageView);
+
+        mGymImageView = (ImageView) mView.findViewById(R.id.gymImageView);
+        //ImageView restaurantImageView = (ImageView) mView.findViewById(R.id.gymImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.gymNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
@@ -47,7 +50,7 @@ public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements Vi
                 .load(gym.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
-                .into(restaurantImageView);
+                .into(mGymImageView);
 
         nameTextView.setText(gym.getName());
         categoryTextView.setText(gym.getCategories().get(0));

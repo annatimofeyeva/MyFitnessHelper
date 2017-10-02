@@ -5,11 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.FirebaseGymListAdapter;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters.FirebaseGymViewHolder;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.util.OnStartDragListener;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,10 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedGymListActivity extends AppCompatActivity {
+public class SavedGymListActivity extends AppCompatActivity implements OnStartDragListener {
 
     private DatabaseReference mGymReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseGymListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -46,24 +51,35 @@ public class SavedGymListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Gym, FirebaseGymViewHolder>
-                (Gym.class, R.layout.gym_list_item_dra, FirebaseGymViewHolder.class,
-                        mGymReference) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
-            @Override
-            protected void populateViewHolder(FirebaseGymViewHolder viewHolder,
-                                              Gym model, int position) {
-                viewHolder.bindGym(model);
-            }
-        };
+        mGymReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_GYMS)
+                .child(uid);
+
+        mFirebaseAdapter = new FirebaseGymListAdapter(Gym.class,
+                R.layout.gym_list_item_dra, FirebaseGymViewHolder.class,
+                mGymReference, this, this);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }
