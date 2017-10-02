@@ -4,6 +4,7 @@ package com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.GymDetailActivity;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.util.ItemTouchHelperViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +25,8 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseGymViewHolder extends RecyclerView.ViewHolder  {
+public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder
+{
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
 
@@ -56,5 +59,23 @@ public class FirebaseGymViewHolder extends RecyclerView.ViewHolder  {
         nameTextView.setText(gym.getName());
         categoryTextView.setText(gym.getCategories().get(0));
         ratingTextView.setText("Rating: " + gym.getRating() + "/5");
+    }
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(700);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+
     }
 }
