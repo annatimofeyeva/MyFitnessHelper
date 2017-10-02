@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,6 +29,7 @@ public class SavedGymListActivity extends AppCompatActivity implements OnStartDr
     private DatabaseReference mGymReference;
     private FirebaseGymListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
+
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -39,14 +41,6 @@ public class SavedGymListActivity extends AppCompatActivity implements OnStartDr
         setContentView(R.layout.activity_gyms);
         ButterKnife.bind(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        mGymReference = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_GYMS)
-                .child(uid);
-
         setUpFirebaseAdapter();
     }
 
@@ -54,14 +48,15 @@ public class SavedGymListActivity extends AppCompatActivity implements OnStartDr
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mGymReference = FirebaseDatabase
-                .getInstance()
+        Query query = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_GYMS)
-                .child(uid);
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseGymListAdapter(Gym.class,
                 R.layout.gym_list_item_dra, FirebaseGymViewHolder.class,
-                mGymReference, this, this);
+                query, this, this);
+
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
