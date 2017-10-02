@@ -72,7 +72,9 @@ public class FirebaseGymListAdapter extends FirebaseRecyclerAdapter<Gym, Firebas
     @Override
     protected void populateViewHolder(final FirebaseGymViewHolder viewHolder, Gym model, int position) {
         viewHolder.bindGym(model);
+
         viewHolder.mGymImageView.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
@@ -81,7 +83,6 @@ public class FirebaseGymListAdapter extends FirebaseRecyclerAdapter<Gym, Firebas
                 return false;
             }
         });
-
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

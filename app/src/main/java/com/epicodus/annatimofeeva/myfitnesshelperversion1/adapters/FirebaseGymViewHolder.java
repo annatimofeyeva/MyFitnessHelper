@@ -23,19 +23,20 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseGymViewHolder extends RecyclerView.ViewHolder  {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
-    public ImageView mGymImageView;
+
 
     View mView;
     Context mContext;
+    public ImageView mGymImageView;
 
     public FirebaseGymViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
+
     }
 
     public void bindGym(Gym gym) {
@@ -55,32 +56,5 @@ public class FirebaseGymViewHolder extends RecyclerView.ViewHolder implements Vi
         nameTextView.setText(gym.getName());
         categoryTextView.setText(gym.getCategories().get(0));
         ratingTextView.setText("Rating: " + gym.getRating() + "/5");
-    }
-
-    @Override
-    public void onClick(View view) {
-        final ArrayList<Gym> gyms = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GYMS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    gyms.add(snapshot.getValue(Gym.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, GymDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("gyms", Parcels.wrap(gyms));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
     }
 }
