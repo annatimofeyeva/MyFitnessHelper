@@ -33,7 +33,7 @@
         android:id="@+id/webTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="https://google.com"
+        android:text="https://www.myfitnesspal.com/"
         android:autoLink="web"
         android:layout_marginTop="29dp"
         android:layout_below="@+id/aboutTextView"

@@ -48,7 +48,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if (v == mWebTextView) {
-            Uri webpage = Uri.parse("https://www.google.com/");
+            Uri webpage = Uri.parse("https://www.myfitnesspal.com/");
             Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(webIntent);
 

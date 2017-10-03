@@ -2,12 +2,18 @@ package com.epicodus.annatimofeeva.myfitnesshelperversion1.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.Constants;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.R;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.models.Gym;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.GymDetailActivity;
+import com.epicodus.annatimofeeva.myfitnesshelperversion1.ui.GymDetailFragment;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.util.ItemTouchHelperAdapter;
 import com.epicodus.annatimofeeva.myfitnesshelperversion1.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -27,6 +33,7 @@ public class FirebaseGymListAdapter extends FirebaseRecyclerAdapter<Gym, Firebas
     private DatabaseReference mRef;
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
+    private int mOrientation;
 
     private ChildEventListener mChildEventListener;
     private ArrayList<Gym> mGyms = new ArrayList<>();
@@ -73,6 +80,11 @@ public class FirebaseGymListAdapter extends FirebaseRecyclerAdapter<Gym, Firebas
     protected void populateViewHolder(final FirebaseGymViewHolder viewHolder, Gym model, int position) {
         viewHolder.bindGym(model);
 
+        mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            createDetailFragment(0);
+        }
+
         viewHolder.mGymImageView.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -85,16 +97,26 @@ public class FirebaseGymListAdapter extends FirebaseRecyclerAdapter<Gym, Firebas
         });
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, GymDetailActivity.class);
-                intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("gyms", Parcels.wrap(mGyms));
-                mContext.startActivity(intent);
+                int itemPosition = viewHolder.getAdapterPosition();
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    createDetailFragment(itemPosition);
+                } else {
+                    Intent intent = new Intent(mContext, GymDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                    intent.putExtra(Constants.EXTRA_KEY_RESTAURANTS, Parcels.wrap(mGyms));
+                    mContext.startActivity(intent);
+                }
             }
         });
+    }
 
+    private void createDetailFragment(int position) {
+        GymDetailFragment detailFragment = GymDetailFragment.newInstance(mGyms, position);
+        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.gymDetailContainer, detailFragment);
+        ft.commit();
     }
 
     @Override
