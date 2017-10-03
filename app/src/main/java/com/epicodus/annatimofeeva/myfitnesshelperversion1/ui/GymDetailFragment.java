@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -50,6 +53,18 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
     TextView mSaveGymButton;
 
     private Gym mGym;
+    private ArrayList<Gym> mGyms;
+    private int mPosition;
+
+    public static GymDetailFragment newInstance(ArrayList<Gym> restaurants, Integer position) {
+        GymDetailFragment restaurantDetailFragment = new GymDetailFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(Constants.EXTRA_KEY_RESTAURANTS, Parcels.wrap(restaurants));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
+        restaurantDetailFragment.setArguments(args);
+        return restaurantDetailFragment;
+    }
 
     public static GymDetailFragment newInstance(Gym gym) {
         GymDetailFragment gymDetailFragment = new GymDetailFragment();
@@ -62,7 +77,9 @@ public class GymDetailFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGym = Parcels.unwrap(getArguments().getParcelable("gym"));
+        mGyms = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_RESTAURANTS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mGym = mGyms.get(mPosition);
     }
 
     @Override

@@ -21,9 +21,11 @@ public class GymPagerAdapter extends FragmentPagerAdapter {
         mGyms = gyms;
     }
 
+
+
     @Override
     public Fragment getItem(int position) {
-        return GymDetailFragment.newInstance(mGyms.get(position));
+        return GymDetailFragment.newInstance(mGyms, position);
     }
 
     @Override
