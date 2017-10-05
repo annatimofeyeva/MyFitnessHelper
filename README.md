@@ -1,8 +1,8 @@
 # MyFitnessHelper
 
-MyFitnessHelper - Android application that tracks your weight and calculate a recommended daily calorie intake.The app tracks your progress towards your goals and offers chat forums with fellow users.These include conversations, recepies, tips and personal success stories.
+MyFitnessHelper - Android application that allows user to track Fitness activities according to location (zip code). User can see a list of gyms according to a zip code, select gyms and go to a Detail Gym Page. User can saved Gyms and see a list of saved Gyms. Within this list user can change the gyms' order and delete concrete gym (animated process).
 
-This project was generated with Android Studio version 2.2.2.
+This project was generated with Android Studio version 2.3.3.
 
 
 ## Prerequisites
@@ -15,20 +15,19 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* git clone <repository-url>` this repository
 * Open the project with Android Studio
 
 
-## User stories (branch version1)
+## User stories
+* User is able LogIn or create account
 * User is able to see Application Main Page
 * User is able to click "About App" button and see "About" page content
-* User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms on the next page
-* User is able to click on individual Gym item and see a Toast with Gym's name and Gym description
-* From each page user is able to return back using emulator's or real device "Back button"
-## User stories (master)
-* User is able to see Application Main Page
-* User is able to click "About App" button and see "About" page content
-* User is able to type numeric values in "Enter Zip Code", click "Find Gyms" button and see a List of Gyms' names, retrived from the Yelp API
+* User is able to click "Find Gyms" button, click search widget, type zip code, observe a list of Gyms and go to Gyms Detail Pages
+* From Gyms Detail Page user is able to go to the Gmaps Gym location, make a call to the Gym see Gym's website
+* User is able to click "Save Gyms" button to save concrete
+* User is able to reorder SavedGyms (animated) and delete Gym with swiping
+* User is able to go to SavedGyms Detail Page
 * From each page user is able to return back using emulator's or real device "Back button"
 ## Support and contact details
 
