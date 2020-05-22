@@ -1,6 +1,6 @@
 # MyFitnessHelper
 
-MyFitnessHelper - my Capstone project for Java/Android course in Epicodus. MyFitnessHelper - an android application that allows user to track Fitness activities according to location (zip code). User can see a list of gyms according to a zip code, select gyms and go to a Detail Gym Page. User can saved Gyms and see a list of saved Gyms. Within this list user can change the gyms' order (animated process) and delete gym with swiping.
+MyFitnessHelper - my Capstone Project for Java/Android course in Epicodus. MyFitnessHelper - an android application that allows user to track Fitness activities according to location (zip code). User can see a list of gyms according to a zip code, select gyms and go to a Detail Gym Page. User can saved Gyms and see a list of saved Gyms. Within this list user can change the gyms' order (animated process) and delete gym with swiping.
 
 This project was generated with Android Studio version 2.3.3.
 
